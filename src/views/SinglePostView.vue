@@ -1,29 +1,22 @@
 <template>
-  <MainHeader
-    title="Hello Developer!"
-    subtitle="Lorem ipsum dolor sit amet, consectetur adipisicing elit"
-  />
+  <MainHeader :title="post.title" />
   <div class="container my-5">
-    <div class="row">
-      <ContentCard v-for="post in posts" :key="post.id" :post="post" />
-    </div>
+    {{ post.content }}
   </div>
 </template>
 
 <script>
-import ContentCard from "../components/ContentCard.vue";
 import MainHeader from "../components/MainHeader.vue";
-import { findData } from "../../lib/request.js";
+import { getData } from "../../lib/request.js";
 
 export default {
-  name: "HomeView",
+  name: "SinglePostView",
   components: {
-    ContentCard,
     MainHeader,
   },
   data() {
     return {
-      posts: [],
+      post: null,
     };
   },
   created() {
@@ -40,7 +33,7 @@ export default {
   },
   methods: {
     fetchData() {
-      this.posts = findData();
+      this.post = getData(this.$route.params.id);
     },
   },
 };

@@ -3,13 +3,23 @@
     <div
       class="container h-100 d-flex flex-column justify-content-center align-items-center"
     >
-      <h1 class="header__title text-center">Hello Developer!</h1>
+      <h1 class="header__title text-center">{{ title }}</h1>
       <p class="header__subtitle">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit
+        {{ subtitle }}
       </p>
     </div>
   </header>
 </template>
+
+<script>
+export default {
+  name: "MainHeader",
+  props: {
+    title: String,
+    subtitle: String,
+  },
+};
+</script>
 
 <style scoped>
 .header__background {
